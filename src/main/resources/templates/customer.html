@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p th:text="'Hello！, ' + ${name} + '!'" ></p>
+
+<div class="panel-body">
+</div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">系统用户</h3>
+        </div>
+        <table class="table table-striped" data-toggle="table" data-height="300"
+               data-url=""
+               data-pagination="true" data-search="true" data-show-refresh="true"
+               data-show-toggle="true" data-show-columns="true">
+            <tr>
+                <th>入职时间</th>
+                <th>姓名</th>
+                <th>账号</th>
+                <th>手机</th>
+                <th>离职时间</th>
+                <th>密码</th>
+            </tr>
+            <tr th:each="rec ,iterStat : ${list}" th:class="${iterStat.odd}? 'odd'">
+                <td th:text="${#dates.format(rec.ctime,'yyyy-MM-dd HH:mm:ss')}"></td>
+                <td th:text="${rec.name}"></td>
+                <td th:text="${rec.code}"></td>
+                <td th:text="${rec.mobile}"></td>
+                <td th:text="${rec.address}"></td>
+            </tr>
+        </table>
+</div>
+</body>
+</html>

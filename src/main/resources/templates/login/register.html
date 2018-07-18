@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>注册中心</title>
+
+<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+<link type="text/css" rel="stylesheet"  th:href="@{/css/user/rigister.css}" />
+</head>
+<body >
+<div id="main">
+<div id="top">
+<div id="mess"><h3>用户注册中心</h3></div>
+</div>
+<div  id="content">
+<div id="apart0"></div>
+ <div id="bg_color">
+    <span id="c1" ></span>
+    <span id="c2" ></span>
+    <span id="c3" ></span>
+    <span id="c4"></span>
+    <span id="c5" ></span>
+    <span id="select">选择颜色：</span></div>
+<div id="apart1"></div>
+<div id="fill_in">
+ <form class="m-t form-horizontal" id="register_form" role="form"
+       th:action="@{/user/save}" method="post" th:object="${user}">
+<br />
+<div th:if="${not #strings.isEmpty(errorMessage)}">
+    <div class="form-group">
+         <label for="errorMessage" class="col-sm-2 control-label">错误信息：</label>
+         <div class="col-sm-7">
+             <span style="color:#ff9955;" th:id="errorMessage" th:text="${errorMessage}"></span>
+         </div>
+    </div>
+</div>
+<div class="form-group">
+<label for="username" class="col-sm-2 control-label">账号：</label>
+<div class="col-sm-7">
+<input id="username"  th:field="*{name}" type="text" class="form-control list-inline" />
+</div>
+<span id="usernameSpan"></span>
+</div><br />
+
+<div class="form-group">
+<label for="password" class="col-sm-2 control-label">密码：</label>
+<div class="col-sm-7">
+<input id="password"  th:field="*{password}" type="password" class="form-control list-inline" />
+</div>
+<span id="passwordSpan"></span>
+</div><br />
+
+
+<div class="form-group">
+<label for="passwordConfirm" class="col-sm-2 control-label">校验：</label>
+<div class="col-sm-7">
+<input id="passwordConfirm" type="password" class="form-control list-inline" />
+</div>
+<span id="passwordConfirmSpan"></span>
+</div>
+
+<div id="apart2" style="width:700px ; border:none;height:60px;"></div>
+
+<div id="register"><a id="regist" href="#">注册</a></div>
+
+<div id="apart3" style="width:700px ; border:none;height:40px;"></div>
+
+<div id="login_"><a id="log_" th:href="@{/user/login}">登录</a></div>
+
+</form>
+</div>
+</div>
+</div>
+</body>
+
+<script th:src="@{/js/jquery-3.1.1.js}"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+<script type="text/javascript"  th:src="@{/js/login/register.js}"></script>
+</html>
